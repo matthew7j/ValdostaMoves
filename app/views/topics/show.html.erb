@@ -1,0 +1,45 @@
+<div class="mainbackground">
+<div id="forumsshow">
+
+<%= @topic.forum.title %>
+	<p id="notice"><%= notice %></p>
+
+	<table id="topic-posts" class="table forum-striped">
+
+	<tr>
+		<th><%= @topic.title %></th>
+	</tr>
+    <tr>
+    	<th>User</th>
+    	<th>Date</th>
+    	<th>Time</th>
+    	<th>Post</th>
+  	</tr>
+  	<% @topic.posts.each do |post| %>
+  	<tr>
+    	<td style="width:25%;">
+      		<%= post.user.email %>
+    	</td>
+    	<td>
+    		<%= post.created_at.strftime("%m / %d / %Y") %>
+    	</td>
+    	<td>
+    		<%= post.created_at.strftime("%I:%M %p")%>
+    	</td>
+    	<td>
+      		<p><%=post.body%></p>
+    	</td>
+  	</tr>
+  <% end %>
+</table>
+<% @user = current_user %>
+<% if @user != nil %>
+<%= link_to 'Reply', reply_forum_topic_path(:forum_id=>@forum, :id=>@topic), class: "btn btn-success"%> 
+<% end %>
+		<%= link_to 'Back', forum_path(:id=> @topic.forum_id), class: 'btn btn-primary' %>
+			<!--<%= link_to @topic.forum.title, @topic.forum%>-->
+</div>
+</div>
+ 
+
+

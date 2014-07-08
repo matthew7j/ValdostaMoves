@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+<div id= "forum_align">
+<div id= "showusers">
+<h1>Editing user</h1>
+
+<%= render 'form' %>
+
+<td><%= link_to 'Show', @user, class: 'btn btn-primary'%></td>
+<td><%= link_to 'Back', users_path, class: 'btn btn-primary'%></td>
+
+</div>
+</div>

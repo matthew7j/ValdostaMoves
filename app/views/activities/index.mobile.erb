@@ -1,0 +1,66 @@
+<script type="text/javascript">
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+<div id= "mobileheader">
+
+  
+Report your daily activities and win prizes! The more active you are the better chance you have of winning prizes.
+
+</div>
+
+
+
+<div id="mobileactivity">
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Duration</th>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody id="changetable">
+    <% @activities.each do |p| %>
+      <tr>
+      	
+        <td><%= p.posts %></td>
+        <td><%= p.duration %> minutes</td>
+        <td><%= p.user.email %> minutes</td>
+        <td><%= p.created_at.strftime("%m / %d / %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>  
+
+
+
+<div id="mobileactivity">
+<% @user = current_user %>
+<% if @user != nil %>
+<%= form_for Activity.new do |f| %>
+  <p>
+    <%= f.label :"What was your Activity/Exercise ?" %>
+  </p>
+  <p>
+    <%= f.text_area :posts, :cols => "100", :rows => "10" %>
+  </p>
+  <p>
+    <%= f.label :"How Long Did You Do This?" %>
+    <%= f.select :duration, options_for_select(%w[15 30 45 60]) %> 
+      	
+  </p>
+  <%= f.submit "Post", class: 'btn btn-success' %>
+  <%= link_to 'Back', activities_path, class: 'btn btn-primary' %>
+<% end %>
+
+</div>
+<% else %>
+<div id="newevent">
+<h4>You have to be logged in to post. If you're not a member, sign up for a chance to win prizes!</h4>
+</div>
+<% end %>

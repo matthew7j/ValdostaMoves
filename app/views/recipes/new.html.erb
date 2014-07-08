@@ -1,0 +1,15 @@
+<script type="text/javascript">
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+
+
+<div id= "newrecipe">
+<h1>New recipe</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', category_recipes_path(@category), class: "btn btn-primary" %>
+
+</div>

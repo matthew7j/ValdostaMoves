@@ -1,0 +1,33 @@
+// Place all the styles related to the Recipes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#recipes_align { 
+margin-top:90px; 
+margin-left:5%; 
+margin-right:5%; 
+}
+
+.list_image {
+ width: 90px;
+ height: 90px;
+ }
+ 
+.list_image:hover {
+  width: 180px;
+  height: 180px;
+  
+}
+
+
+.list_image_recipe_show {
+ width: 230px;
+ height: 230px;
+ }
+ 
+.list_image_recipe_show:hover {
+  width: 400px;
+  height: 400px;
+  
+}

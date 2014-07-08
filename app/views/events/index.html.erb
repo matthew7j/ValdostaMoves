@@ -1,0 +1,183 @@
+<script type="text/javascript">
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+<h>
+<br>
+    <div id="newevent">
+    Upcoming Events
+    </div> 
+</h>    
+<br>
+
+
+<script>
+  $(document).ready(function(){
+      // page is now ready, initialize the calendar...
+      $('#new_event').click(function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        $.ajax({
+          url: url,
+          beforeSend: function() {
+            $('#loading').show();
+          },
+          complete: function() {
+            $('#loading').hide();
+          },
+          success: function(data) {
+            $('#create_event').replaceWith(data['form']);
+            $('#create_event_dialog').dialog({
+              title: 'New Event',
+              modal: true,
+              width: 500,
+              close: function(event, ui) { $('#create_event_dialog').dialog('destroy') }
+            });
+          }
+        });
+      });
+	  
+      $('#calendar').fullCalendar({
+          editable: true,
+          header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,agendaWeek,agendaDay'
+          },
+          defaultView: 'month',
+          height: 500,
+          slotMinutes: 15,
+          
+          
+          events: '/events.json',
+         
+
+
+          timeFormat: 'h:mm t{ - h:mm t} ',
+          dragOpacity: "0.5",
+          eventDrop: function(event, dayDelta, minuteDelta, allday, revertFunc){
+              if (confirm("Are you sure about this change?")) {
+                moveEvent(event, dayDelta, minuteDelta, allDay);
+              }
+              else {
+                revertFunc();
+              }
+          },
+          
+          eventResize: function(event, dayDelta, minuteDelta, revertFunc){
+//              if (confirm("Are you sure about this change?")) {
+                  resizeEvent(event, dayDelta, minuteDelta);
+//              }
+//              else {
+//                  revertFunc();
+//              }
+          },
+          
+          eventClick: function(event, jsEvent, view){
+              showEventDetails(event);
+          },
+          
+          dayClick: function(date, allDay, jsEvent, view){
+            if (allDay) {
+              alert('Clicked on the entire day: ' + date);
+            }
+            else{
+              alert('Clicked on the slot: ' + date);
+            }
+          }
+          
+      });
+  }); 
+  
+</script>
+    <script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-easing-1.3.pack.js"></script><script type="text/javascript" src="js/jquery-easing-compatibility.1.2.pack.js"></script>
+
+<div id="eventlist">
+<div id= "calendarback">
+  <div id="calendar">
+  </div>
+</div>
+</div>
+<br>
+<div id="newevent">
+    Events
+    </div> 
+
+<div id="newevent2">
+<div id="event-description">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Event Date</th>
+      <th>Start Time</th>
+    </tr>
+  </thead>
+<% @events = Event.all %>
+  <tbody id="changetable">
+    <% @events.each do |event| %>
+      <tr>
+      	
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.start.strftime("%m / %d / %Y") %></td>
+        <td><%= event.start.strftime("%I:%M %p") %></td>
+        <td><%= link_to 'Show', event, class: 'btn btn-info', 'data-no-turbolink' => true %></td>
+        
+        <% if can? :manage, User %>
+        <td><%= link_to 'Edit', edit_event_path(event), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% @user = current_user %>
+<% if @user != nil %>
+<%= link_to 'New Event', new_event_path, class: "btn btn-success" %>
+<% end %>
+</div>
+</div>
+
+<div id = "desc_dialog" class="dialog" style ="display:none;">
+  <div id = "event_desc">
+  </div>
+  <br/>
+  <br/>
+  <div id = "event_actions">
+    <span id = "edit_event"></span>
+    <span id = "delete_event"></span>
+  </div>
+</div>
+<div id = "create_event_dialog" class="dialog" style ="display:none;">
+  <div id = "create_event">
+  </div>
+</div>
+
+<script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" type="text/javascript"></script>
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" type="text/javascript"></script>
+
+<br>
+<h>
+
+    <div id="newevent">
+    Event Locations
+    </div> 
+</h>    
+<br>
+<div id="event-location">
+<div id= "gmaps">
+  <div id="map" style='width: 100%; height: 480px;'></div>
+</div>
+</div>
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>
+

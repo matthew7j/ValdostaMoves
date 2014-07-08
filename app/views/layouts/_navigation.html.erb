@@ -1,0 +1,48 @@
+
+
+
+<nav class="nav" role="navigation">
+   <div class="navbar-header">
+       <%= link_to image_tag('VMlogo2.png'), root_path %>
+   </div>
+   <div class="navbar-header">
+       <%= link_to image_tag('VMlogowords.png'), root_path %>
+   </div>
+   <div class="ratings">
+   <% @user = current_user %>
+  	<% if @user != nil %>
+  		<div class="points">
+  		<a href="../activities"><button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Earn points by getting out the house, playing, and staying healthy. If you run, play football, practice yoga, do a few push ups, or anything to keep yourself in shape we want to hear about it. Whatever activity or exercise you do for the day come back and report on our activities page. The more you do the more points you earn! You can also earn points by going to one of the user created events and coming back after it and rating the events. Everytime you rate an event you'll also earn points. You can also get points by trying some of the users recipes on the nutrition page and rating them. Users with the most points at the end of each week will get prizes from local gyms and restaurants! Click on this button to go to our Activites page.">You have <%= pluralize @user.points + @user.event_points, 'point' %> this week  <br /><span class="hover">(hover over this to see how to earn more points)</span></button></a>
+  		</div>
+  	<% else %>
+  		<div class="points">
+  		<a href="../activities"><button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Earn points by getting out the house, playing, and staying healthy. If you run, play football, practice yoga, do a few push ups, or anything to keep yourself in shape we want to hear about it. Whatever activity or exercise you do for the day come back and report on our activities page. The more you do the more points you earn! You can also earn points by going to one of the user created events and coming back after it and rating the events. Everytime you rate an event you'll also earn points. You can also get points by trying some of the users recipes on the nutrition page and rating them. Users with the most points at the end of each week will get prizes from local gyms and restaurants! Click on this button to go to our Activites page.">You have 0.0 points this week  <br /><span class="hover">(hover over this to see how to earn more points)</span></button></a>
+  		</div>
+  	<% end %>
+   </div>
+</nav>
+
+
+<nav class="navbar navbar-default" role="navigation">  
+   <div id="navbar">
+      <ul class="nav navbar-nav">     	 
+         <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to 'HOME', root_path %></li>
+         <li class="<%= 'active' if current_page?(events_path) %>"><%= link_to 'EVENTS', events_path, 'data-no-turbolink' => true %></li>
+         <li class="<%= 'active' if current_page?(categories_path) %>"><%= link_to "NUTRITION", categories_path %>
+         <li class="<%= 'active' if current_page?(exercise_index_path) %>"><%= link_to "EXERCISE",exercise_index_path %> </li>
+         <li class="<%= 'active' if current_page?(forums_path) %>"><%= link_to 'FORUMS', forums_path %></li>
+         <li class="<%= 'active' if current_page?(gyms_path) %>"><%= link_to 'GYMS' , gyms_path, 'data-no-turbolink' => true %></li>
+         <% if can? :manage, User %>
+      	   <li><%= link_to 'USERS' , users_path %></li>
+		 <% end %>
+         <li> 
+		   <% if user_signed_in? %>
+  		     <%= link_to('LOGOUT', destroy_user_session_path, :method => :delete) %>        
+ 		   <% else %>
+  			 <li id="login-ml"><%= link_to('LOGIN', '#login', data: { toggle: "modal", target: "#login" } )  %></li>
+  			 <li id="signup-ml"><%= link_to('SIGN-UP', '#sign_up', data: { toggle: "modal", target: "#sign_up" } )  %></li>
+ 	 	   <% end %>  
+         </li>
+      </ul>     
+   </div>
+</nav>

@@ -1,0 +1,23 @@
+<%= simple_form_for(@category) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+	<div class = "row">
+    <%= f.input :name %>
+    
+    </div>
+    <div class = "row">
+	<%= f.input :imagesrc %>
+	
+	</div>
+  </div>
+</br>
+  <div class="form-actions">
+  	<div class = "action">
+      <%= f.submit "Submit", class: 'btn btn-success' %>
+   </div>
+  	<br>
+  	
+  </div>
+
+<% end %>

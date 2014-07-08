@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<!-- get jQuery from the google apis -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/jquery.js"></script>
+		<link rel="stylesheet" href="css/hopscotch.css"></link>
+		<link href="../../introjs.css" rel="stylesheet">
+		<script type="text/javascript" src="../../intro.js"></script>
+    	<!--><script src="js/my_first_tour.js"></script> <!-- define and start your tour in this file -->
+
+		<!-- GOOGLE FONTS -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
+	
+	<!--bootstrap tour-->
+	<link href="./bootstrap-tour.css" rel="stylesheet">
+	<script src="./bootstrap-tour.js"></script>
+	<script src="./demo.js"></script>
+
+  	<title>Valdosta Moves</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Vmoves" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Vmoves" %>">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <script type="text/javascript">
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+
+<script type="text/javascript"> $(function ()
+
+{ $("#modal").modal({show:false })}); </script>
+
+<%= favicon_link_tag '/favicon.ico' %>
+
+  </head>
+  <body>
+    <div id="mainbackground">
+	<%= render 'layouts/navigation' %>
+  	
+
+  	
+
+    <main role="main">
+       <%= render 'layouts/messages' %>
+       <%= render "layouts/login_modal" %>
+	   <%= render "layouts/sign_up_modal" %>
+       <%= yield %>
+       
+    </main>
+    <!--<a class="btn btn-large btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a>-->
+    
+    </div>
+  </body>
+
+
+</html>

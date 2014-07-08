@@ -1,0 +1,49 @@
+
+<div class="mainbackground">
+<div id="forumsshow">
+<h1 align="text-left"><%= @forum.title %></h1>
+
+<table class="table forum-striped">
+  <tr>
+    <th>Post / Author</th>
+    <th>Last Reply</th>
+    <th>User</th>
+    <th>Number of Replies</th>
+    <th>Topic Views</th>
+    <th></th>
+    <th></th>
+  </tr>
+	<% @forum.topics.each do |topic| %>
+  		<tr>
+    		<td>
+      			<div id="listing-topics"><%= link_to topic.title, forum_topic_path(:forum_id => @forum, :id => topic) %></div>
+    		</td>
+    
+    		<td>
+    			<%= topic.posts.find(:last).created_at.strftime("%m / %d / %Y") %>
+    			</br>
+    			<%= topic.posts.find(:last).created_at.strftime("%I:%M %p") %>
+
+    		</td>
+    		<td><%= topic.posts.find(:last).user.email %></td>
+    		<td>
+      			<%= topic.posts.count - 1 %>
+    		</td>
+    		<td><%= topic.impressionist_count %></td>
+    		<% if can? :manage, User %>
+    		<td><%= link_to 'edit', edit_forum_topic_path(:forum_id => @forum, :id => topic), class: "btn btn-primary" %></td>
+    		<td><%= link_to 'destroy', forum_topic_path(:forum_id =>@forum, :id => topic), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+    		<% end %>
+  		</tr>
+	<% end %>
+</table>
+<% if can? :manage, User %>
+<%= link_to 'New topic',  new_forum_topic_path(@forum), class: "btn btn-success" %>
+<% end %>
+	<!--<button type="button" class="btn btn-success"><!--<%= link_to 'Edit', edit_forum_path(@forum) %></button>-->
+		<%= link_to 'Back', forums_path, class: 'btn btn-primary' %></button>
+</div>
+</div>
+
+ 
+

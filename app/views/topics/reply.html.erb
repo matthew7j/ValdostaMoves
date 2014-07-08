@@ -1,0 +1,13 @@
+<div id= "forum_align">
+<div id="forumsshow">
+
+
+<h1 id="page_title">Post To: <%= @topic.title %></h1>
+<!--<%= link_to @forum.title, @forum %>-->
+ 
+<%= render 'reply_form' %>
+
+<%= link_to 'Back', forum_topic_path(:forum_id =>@forum, :id => @topic), class: "btn btn-primary" %> 
+<!--<%= link_to @forum.title, @forum %>-->
+</div>
+</div>

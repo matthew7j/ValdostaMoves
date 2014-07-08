@@ -1,0 +1,28 @@
+<div class="mainbackground">
+<div id="mobileforums">
+<h1 id="page_title">VMoves Forums</h1>
+<p id="notice"><%= notice %></p>
+<table class="table forum-striped">
+  <tr>
+    <th>Forum</th>
+    <th>Creator</th>
+    <th>Topic Counts</th>
+    <th></th>
+    <th></th>
+  </tr>
+    <% @forums.each do |forum| %>
+      <tr>
+      	
+       	<td><%= link_to forum.title, forum %></td>
+        <td><%= forum.user.email %></td>
+        <td><%= forum.topics.count %></td>
+      </tr>
+    <% end %>
+</table>
+
+</div>
+
+</div>
+<br>
+
+

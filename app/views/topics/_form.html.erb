@@ -1,0 +1,30 @@
+<%= form_for(@topic, :url => forum_topics_path) do |f| %>
+  <% if @topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this conversation from being saved:</h2>
+ 
+      <ul>
+      <% @topic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+ 
+  <%= fields_for(@post) do |p|%>
+  <div class="field">
+    <%= p.label :body %><br />
+    <%= p.text_area(:body, :size => "60x10")%>
+  </div>
+  <% end %>
+  
+ 
+  <div class="actions">
+    <%= f.submit :as => "Create Post", class: "btn btn-success"%>
+  </div>
+<% end %>

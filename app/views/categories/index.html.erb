@@ -1,0 +1,45 @@
+<div id= "forum_align">
+<div id="categories">
+<h1>Listing categories</h1>
+
+<table id="listing-category" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Image</th>	
+      <th>Name</th>
+      <th></th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+      	<td><%= link_to image_tag(category.imagesrc, class: 'list_image_categ'), category_recipes_path(category), 'data-no-turbolink' => true %></td>
+        <td><h3><%= category.name %></h3></td>
+        <td id="category-button"><%= link_to 'Show', category_recipes_path(category), class: 'btn btn-info', 'data-no-turbolink' => true %>
+        	<% if can? :edit, Category %>
+        <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-primary' %>
+        <%end %>
+        <% if can? :destroy, Category %>
+          <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <%end %>
+       
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if can? :destroy, Category %>
+<%= link_to 'New Category', new_category_path, class: "btn btn-success" %>
+<% end %>
+</div>
+
+</div>
+<div id= "forum_align">
+
+<%= will_paginate @categories %>
+</div>
+</div>

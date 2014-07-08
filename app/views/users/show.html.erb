@@ -1,0 +1,23 @@
+<script type="text/javascript">
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+<div id="showusers">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @user.category_name %>
+</p>
+
+<td><%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %> </td>
+
+<td><%= link_to 'Back', users_path, class: 'btn btn-primary'%></td>
+
+</div>

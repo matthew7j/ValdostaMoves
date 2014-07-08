@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="mainbackground">
+<div id="mobileforums">
+<h1 align="text-left"><%= @forum.title %></h1>
+
+<table class="table forum-striped">
+  <tr>
+    <th>Post / Author</th>
+    <th>Last Reply</th>
+    <th>User</th>
+    <th>Number of Replies</th>
+
+  </tr>
+	<% @forum.topics.each do |topic| %>
+  		<tr>
+    		<td>
+      			<%= link_to topic.title, forum_topic_path(:forum_id => @forum, :id => topic) %>
+    		</td>
+    
+    		<td>
+    			<%= topic.posts.find(:last).created_at.strftime("%m / %d / %Y") %>
+    			
+
+    		</td>
+    		<td><%= topic.posts.find(:last).user.email %></td>
+    		<td>
+      			<%= topic.posts.count - 1 %>
+    		</td>
+  		</tr>
+	<% end %>
+</table>
+
+	<!--<button type="button" class="btn btn-success"><!--<%= link_to 'Edit', edit_forum_path(@forum) %></button>-->
+</div>
+</br>
+		<%= link_to 'Back', forums_path, class: 'btn btn-primary' %></button>
+
+</div>
+
+

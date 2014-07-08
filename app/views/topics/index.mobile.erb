@@ -1,0 +1,27 @@
+<div id="mainbackground">
+<div id="mobileforums">
+<h1>Listing topics</h1>
+
+<table class="table forum-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Forum</th>
+      <th>User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= link_to topic.title, topic %></td>
+        <td><%= topic.forum_id %></td>
+        <td><%= topic.user_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>
+</div>

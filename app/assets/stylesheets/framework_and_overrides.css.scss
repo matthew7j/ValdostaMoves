@@ -1,0 +1,306 @@
+
+
+// import the CSS framework
+@import "bootstrap";
+
+// make all images responsive by default
+img {
+  @extend .img-responsive;
+  margin: 0 auto;
+  }
+// override for the 'Home' navigation link
+.navbar-brand {
+    font-size: inherit;
+    color: #FF3300 !important;
+    float: right;
+  }
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+.column {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.form {
+  @extend .col-md-6;
+  }
+.form-centered {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.submit {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-lg;
+  }
+  
+.navbar .nav > li > a {
+
+    color:  #CCCCCC;   
+}
+  @media (min-width: 768px){
+.navbar-nav{
+    width: 80%;
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    float:none;
+}
+}
+.navbar {
+    margin-bottom: 0;
+     width: 80%;
+
+     margin-left: 9.8%;
+}
+
+  .navbar-default {
+    background-image: -webkit-linear-gradient(top, #5F5F5F 0%, #1A1A1A 100%);
+    background-image: linear-gradient(to bottom, #5F5F5F 0%, #1A1A1A 100%);
+    background-repeat: repeat-x;
+    border-color: #5F5F5F;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffdfdfdf', GradientType=0);
+  }
+  .navbar-default .navbar-nav > .active{
+    color: #000;
+   background: #d65c14;
+ }
+ .navbar-default .navbar-nav > .active > a, 
+ .navbar-default .navbar-nav > .active > a:hover, 
+ .navbar-default .navbar-nav > .active > a:focus {
+      color: #00FF99 !important;
+    background-image: -webkit-linear-gradient(top, #5F5F5F 0%, #1A1A1A 100%);
+ }
+  ul.navbar-nav a:hover { 
+    color: #00FF99 !important;
+    background-color: #767676 !important;
+   }
+// apply styles to HTML elements
+// to make views framework-neutral
+//main {
+  //@extend .container;
+  //background-color: #eee;
+  //padding-bottom: 80px;
+  //width: 100%;
+  //margin-top: 51px; // accommodate the navbar
+  //}
+  
+  
+section {
+  @extend .row;
+  margin-top: 20px;
+  }
+  
+  html, body {
+  background-color: #5F5F5F;
+}
+
+#mainbackground {
+
+  background-color: #5F5F5F;
+  
+  .container {
+    position: absolute;
+    width: 12%;
+    height: 10%;
+    margin-top: auto;
+    margin-left: 1%;   
+  }
+  
+  .container img {
+    width: 100%;
+    height: auto;
+  }
+
+  #banner {
+    padding: 1%;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 67%;
+    font: small-caps 30px/30px "Times New Roman", serif;
+    text-align: center;
+    color: black;
+    background: red;
+    border: solid;
+    border-color: black;
+  }  
+  
+  #linksbar {
+    padding: 0.5%;
+    width: 60%;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    tr {height: 100px;}
+    font: small-caps 16px/16px "Times New Roman", serif, bolder;
+    text-align: center;
+    word-spacing: 20px;
+    a:link {color: #000000;}
+    border: solid;
+    background: red;
+    border-color: black;
+  }
+  
+}
+  
+  .gym {
+    margin-top: 1em;
+    margin-left: 20%;
+    font: bold black;
+  }
+  
+  .health {
+    margin-top: 10em;
+    margin-left: 15%;
+  }
+  
+  .list{
+    border: 2px solid red;
+    padding: 1.5em;
+    background-color: white;
+  }
+  
+  #wrap {
+  min-height: 100%;
+  }
+
+  #main {
+  overflow:auto;
+  padding-bottom:150px;
+  margin-left: 20%;
+   /* this needs to be bigger than footer height*/
+  }
+  
+  .footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+  } 
+
+  .carousel-control {
+    left: 25%;
+    width: 40px;
+    height: 40px;
+    margin-top: 12%;
+    font-size: 60px;
+    font-weight: 100;
+    line-height: 30px;
+    background: #222;
+    border: 3px solid #fff;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 23px;
+}
+
+.right.carousel-control {
+  right: 27.5%;
+    width: 40px;
+    height: 40px;
+    margin-top: 12%;
+    font-size: 60px;
+    font-weight: 100;
+    line-height: 30px;
+    background: #222;
+    border: 3px solid #fff;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 23px;
+}
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+    margin-top: -18px;   
+}
+
+.hover {
+  font-weight: 500; color: #FFFFFF; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-decoration: underline; font-size: xx-small
+}
+
+.points {
+  position: absolute;
+    margin-top: 1%;
+    margin-left: 65%;
+}
+
+
+
+.custom > li > a:hover {
+    color: black;
+    background-color: white;
+}
+
+.custom > li > a {
+  color: white;
+  }
+  
+ .linkbar {
+    margin-left: 18%;
+  }
+  
+.work > a:hover {
+    background-color: transparent;
+}
+
+.work {
+
+  background-image: url('blank-muscle-anatomy.jpg');
+}
+
+.table-hover > tr:hover {
+  background-color: #00FF99;
+}
+
+#eventbtn {
+  float: left;
+  margin-left: 6.5%;
+  margin-top: 2%;
+}
+
+#twitterbtn {
+  float: left;
+  margin-left: 27%;
+  margin-top: 2%;
+}
+
+#tourbtn {
+  float: left;
+  margin-left: 24%;
+  margin-top: 2.25%;
+}
+#eventbtnmobile {
+  float: center;
+}
+
+#twitterbtnmobile {
+  float: center;
+
+}
+
+#act {
+    padding: 1%;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 67%;
+    font: small-caps 30px/30px "Times New Roman", serif;
+    text-align: center;
+    color: black;
+    background: #00FF99;
+    border: solid;
+    border-color: black;
+  }
+  
+.popover-title{
+    font-weight: bold;
+    border-width:medium;
+    background-color: lightgrey;
+}
+
+.popover-content{
+  
+  background: lightyellow;
+  font: "Times New Roman", serif; 
+}

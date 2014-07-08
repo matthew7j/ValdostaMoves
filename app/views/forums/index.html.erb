@@ -1,0 +1,35 @@
+<div class="mainbackground">
+<div id="forumsshow">
+<h1 id="page_title">VMoves Forums</h1>
+<table id="forumtitle" class="table forum-striped">
+  <tr>
+    <th>Forum</th>
+    <th>Creator</th>
+    <th>Topic Counts</th>
+    <th>Forum Views</th>
+    <th></th>
+    <th></th>
+  </tr>
+    <% @forums.each do |forum| %>
+      <tr>
+      	
+       	<td><%= link_to forum.title, forum %></td>
+        <td><%= forum.user.email %></td>
+        <td><%= forum.topics.count %></td>
+        <td><%= forum.impressionist_count %></td>
+        <% if can? :manage, User %>
+        <td><%= link_to 'Edit', edit_forum_path(forum),  class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger'  %></td>
+        <% end %>
+      </tr>
+    <% end %>
+</table>
+<% if can? :manage, User %>
+<%= link_to 'New Forum', new_forum_path, class: "btn btn-success" %>
+<% end %>
+</div>
+
+</div>
+<br>
+
+
