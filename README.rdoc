@@ -1,28 +1,22 @@
-== README
+Valdosta Moves
+==============
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Project was done in a 4 person team environment in which I was the lead programmer
+=======================================================================================
 
-Things you may want to cover:
+LIVE DEMO
+=========
 
-* Ruby version
+{VALDOSTA MOVES}[http://mattfinal.herokuapp.com]
 
-* System dependencies
+Running Instructions
+====================
 
-* Configuration
+You can easily surf the information of this demo application and create an account of your own to give yourself access to:
 
-* Database creation
+- Commenting on forums, events, and recipes
 
-* Database initialization
+- Access commonly used workouts for specific body parts
 
-* How to run the test suite
+- And much more...
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
